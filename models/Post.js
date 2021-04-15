@@ -22,11 +22,8 @@ Post.init(
     contents: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    contents: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },comments: {
+    }, 
+    comments: {
       type: DataTypes.STRING,
       allowNull: true,
     }
