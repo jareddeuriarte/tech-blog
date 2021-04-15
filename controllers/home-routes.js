@@ -4,13 +4,15 @@ const { Post, User } = require('../models');
 // GET all galleries for homepage
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll();
-    res.status(200).json(postData);
+    // when it's set up add the FK user in () of .findAll 
+    const postData = await Post.findAll({});
+    // res.json(postData)
     console.log('----POST DATA------' + postData + '----POST DATA------')
    
     const posts = postData.map((post) => post.get({ plain: true }));
-    res.render('homepage', { posts });
     console.log('-----POSTS-----' + posts + '------POSTS----')
+
+    res.render('homepage', {posts} );
 
   } catch (err) {
     res.status(500).json(err);
