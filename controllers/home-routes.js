@@ -4,10 +4,10 @@ const { Post, User } = require('../models');
 // GET all galleries for homepage
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll().catch((err) => {
-      res.json(err);
-      console.log('----POST DATA------' + postData + '----POST DATA------')
-    });
+    const postData = await Post.findAll();
+    res.status(200).json(postData);
+    console.log('----POST DATA------' + postData + '----POST DATA------')
+   
     const posts = postData.map((post) => post.get({ plain: true }));
     res.render('homepage', { posts });
     console.log('-----POSTS-----' + posts + '------POSTS----')
